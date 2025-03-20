@@ -5,34 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração para responsividade, ajusta a escala em dispositivos móveis -->
     <title>Catálogo de Patinhos de Borracha 🦆</title> <!-- Título da página que aparece na aba do navegador -->
     <link rel="stylesheet" href="css/styles.css"> <!-- Link para o arquivo CSS externo -->
+    <script type="module" src="patinhos.js"></script> <!-- Link para o arquivo JavaScript externo -->
 </head>
 <body> <!-- Corpo do documento, contém o conteúdo visível da página -->
     <header> <!-- Elemento semântico que define o cabeçalho da página -->
         <h1>Catálogo de Patinhos de Borracha</h1> <!-- Título principal da página (heading 1) -->
     </header>
-    <div class="container"> <!-- Contêiner principal que agrupa os cards dos patinhos -->
-        <!-- Início do primeiro card de patinho -->
-        <div class="duck-card"> <!-- Div que representa um card de patinho individual -->
-            <img src="img/pedreiro.jpg" alt="Patinho Pedreiro"> <!-- Imagem do patinho com texto alternativo para acessibilidade -->
-            <h2>Patinho Pedreiro</h2> <!-- Subtítulo (heading 2) com o nome do patinho -->
-            <p>Especialista em depurar problemas de infraestrutura e CI/CD. Quando seu pipeline quebrar ou o deploy falhar, conte com este patinho construtor para ajudar a identificar e consertar as falhas na sua arquitetura.</p> <!-- Parágrafo com a descrição do patinho -->
-        </div>
-        
-        <!-- Início do segundo card de patinho -->
-        <div class="duck-card"> <!-- Div que representa um card de patinho individual -->
-            <img src="img/rosinha.jpg" alt="Patinho Rosinha"> <!-- Imagem do patinho com texto alternativo para acessibilidade -->
-            <h2>Patinho Rosinha</h2> <!-- Subtítulo (heading 2) com o nome do patinho -->
-            <p>Especialista em UX/UI e frontend. Conte com este patinho para resolver problemas de CSS, identificar bugs visuais e melhorar a experiência do usuário. Excelente para rituais de debugging em projetos React ou Angular.</p> <!-- Parágrafo com a descrição do patinho -->
-        </div>
-        
-        <!-- Início do terceiro card de patinho -->
-        <div class="duck-card"> <!-- Div que representa um card de patinho individual -->
-            <img src="img/secretario.jpeg" alt="Patinho Secretário"> <!-- Imagem do patinho com texto alternativo para acessibilidade -->
-            <h2>Patinho Secretário</h2> <!-- Subtítulo (heading 2) com o nome do patinho -->
-            <p>Mestre em organização de código e documentação. Quando seu código precisar de refatoração ou estiver com bugs difíceis de rastrear, este patinho vai ajudá-lo a ver padrões e documentar soluções com eficiência e clareza.</p> <!-- Parágrafo com a descrição do patinho -->
-        </div>
-        
-        <!-- Você pode adicionar mais patinhos de borracha quando tiver mais imagens -->
+    <div class="container" id="patinhos-container"> <!-- Contêiner principal que agrupa os cards dos patinhos -->
+        <!-- Os cards de patinhos serão inseridos aqui -->
     </div>
+
+    <script type="module">
+      import patinhos from "./patinhos.js";
+
+      const patinhosContainer = document.getElementById("patinhos-container");
+
+      patinhos.forEach((patinho) => {
+        const card = document.createElement("div");
+        card.classList.add("duck-card");
+
+        card.innerHTML = `
+          <img src="${patinho.imagem}" alt="${patinho.alt}">
+          <h2>${patinho.nome}</h2>
+          <p>${patinho.descricao}</p>
+        `;
+
+        patinhosContainer.appendChild(card);
+      });
+    </script>
 </body>
 </html>
